@@ -1,13 +1,11 @@
 package main
 
 import (
-	"fmt"
+	f "fmt"
+	. "strings"
+	// _ "sub"
 )
 
 func main() {
-	// fmt.Println(gosample.Message)
-	// fmt.Println(gosample.Message2)
-	param := [...]string{"a", "b"}
-	fmt.Println(param)
-	fmt.Println(sub.param)
+	f.Println(ToUpper("hello world"))
 }
