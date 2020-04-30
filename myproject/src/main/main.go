@@ -7,5 +7,6 @@ import (
 )
 
 func main() {
-	f.Println(ToUpper("hello world"))
+	// aa
+	f.Println(ToLower("hello world"))
 }
