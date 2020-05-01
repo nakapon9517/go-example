@@ -3,20 +3,53 @@ package main
 import (
 	"errors"
 	f "fmt"
+	"log"
 	s "strings"
-	// _ "sub"
 )
 
 func main() {
-	// n, err := div(10, 0)
-	// if err != nil {
-	// 	// エラーを出力しプログラムを終了する
-	// 	log.Fatal(err)
-	// }
-	// fmt.Println(n)
 
-	//
-	sub(5)
+	// 配列１
+	target := []int{1, 2, 3}
+	// 配列２
+	target2 := []int{4, 5, 6}
+
+	// 配列１，２を引数に
+	// 返り値は正常メッセージとエラー情報
+	errIndex := 5
+	result, err := sub1(errIndex, target, target2)
+
+	// エラー情報が存在する場合
+	if err != nil {
+		// エラー出力＆処理終了
+		log.Fatal(err)
+	}
+
+	// 正常メッセージ出力
+	f.Println(result)
+}
+
+// 引数はint型の配列
+// 返り値指定（result, err)
+func sub1(errIndex int, num ...[]int) (result string, err error) {
+
+	// 配列結合
+	outputStr := append(num[0], num[1]...)
+
+	// 配列の回数処理実行
+	for i, str := 0, outputStr; i < len(str); i++ {
+
+		if i != errIndex {
+			// 配列出力
+			f.Println(outputStr[i])
+		} else {
+			// 自作エラー作成＆return
+			err = errors.New("error")
+			return
+		}
+	}
+	result = "正常終了"
+	return
 }
 
 func sub(j int) (string, string) {
@@ -55,6 +88,7 @@ func sub(j int) (string, string) {
 	}
 	return "end1", "end2"
 }
+
 func div(i, j int) (result int, err error) {
 	if j == 0 {
 		err = errors.New("divied by zero")
