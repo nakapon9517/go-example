@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(calc.Sum(1, 8))
+	fmt.Println(calc.Sum(3, 8))
 }
