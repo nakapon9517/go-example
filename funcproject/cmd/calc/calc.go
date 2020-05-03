@@ -1,6 +1,6 @@
 package calc
 
-// Sum show print
-func Sum(x,y) int{
-	return x+y
+// Sum return sum
+func Sum(i, j int) int {
+	return i + j
 }
