@@ -27,6 +27,11 @@ func NewData(userID UserID, programID ProgramID) *Data {
 	return data
 }
 
+// Finish method
+func (data *Data) Finish() {
+	fmt.Println("Finish!!")
+}
+
 func div(data *Data) (int, error) {
 	fmt.Println(data.UserID)
 	fmt.Println(data.ProgramID)
@@ -37,6 +42,8 @@ func main() {
 	var userID UserID = 10
 	var programID ProgramID = 20
 	data := NewData(userID, programID)
+
+	data.Finish()
 
 	n, err := div(data)
 	if err != nil {
