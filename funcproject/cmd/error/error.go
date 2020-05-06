@@ -1,8 +1,6 @@
 package errorhandler
 
 import (
-	"fmt"
-
 	log "github.com/sirupsen/logrus"
 )
 
@@ -47,7 +45,8 @@ func ErrorHandler(errorparam error) {
 			requestLogger.Info(e.Msg)
 			requestLogger.Warn(e.Msg)
 		default:
-			fmt.Println(e)
+			requestLogger := log.WithFields(log.Fields{"error_id": "??????", "error_message": "e.Msg"})
+			requestLogger.Warn("e.Msg")
 		}
 
 	}
