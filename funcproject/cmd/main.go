@@ -1,20 +1,17 @@
 package main
 
 import (
-	"fmt"
-	errorHandler "funcproject/error"
-	"funcproject/user"
+	errControl "funcproject/error"
 )
 
 func main() {
-	var userID user.ID = 10
-	var programID user.ProgramID = 20
-	data := user.NewData(userID, programID)
+	addError := errControl.CreateAddError("aaaaaaaaaaa")
+	subError := errControl.CreateSubError("bbbbbbb")
 
-	data.Finish()
-
-	n, err := user.Div(data)
-	errorHandler.ErrorHandler(err)
-	// fmt.Println(calc.Sum(1, 5))
-	fmt.Println(n)
+	if addError != nil {
+		errControl.ErrorHandler(addError)
+	}
+	if subError != nil {
+		errControl.ErrorHandler(subError)
+	}
 }
