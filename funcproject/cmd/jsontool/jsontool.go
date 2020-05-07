@@ -14,9 +14,9 @@ func ConvertPersonToJSON(person *data.Person) []byte {
 }
 
 // ConvertJSONToPerson getJsonToPerson
-func ConvertJSONToPerson(byteData []byte) *data.Person {
-	var persons *data.Person
-	err := json.Unmarshal(byteData, persons)
+func ConvertJSONToPerson(byteData []byte) data.Person {
+	var persons data.Person
+	err := json.Unmarshal(byteData, &persons)
 	errControl.ErrorHandler(err)
 	return persons
 }
