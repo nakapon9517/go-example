@@ -12,13 +12,13 @@ func Test() {
 	// person1
 	fmt.Println("\n>>>person1")
 	person := data.CreatePerson(1, "Gopher", "gopher@example.org", 5, "", "golang lover")
-	byteData := jsontool.ConvertPersonToJSON(person)
+	byteData := ConvertPersonToJSON(person)
 	fmt.Println(string(byteData))
 
 	// person2
 	fmt.Println("\n>>>person2")
 	jsondata := []byte(`{"id":1,"name":"Gopher","age":5}`)
-	person2 := jsontool.ConvertJSONToPerson(jsondata)
+	person2 := ConvertJSONToPerson(jsondata)
 	fmt.Println(person2)
 }
 

@@ -1,10 +1,10 @@
 package main
 
 import (
-	httpHandler "funcproject/http"
+	jsontool "funcproject/jsontool"
 )
 
 func main() {
 	// http
-	httpHandler.SampleCommunication("/", ":3001")
+	jsontool.RequestCall("/", "/persons", ":3000")
 }
