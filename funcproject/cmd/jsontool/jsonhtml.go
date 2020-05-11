@@ -3,9 +3,10 @@ package jsontool
 import (
 	"encoding/json"
 	"fmt"
-	"log"
+	errorhandle "funcproject/error"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 // Person struct
@@ -17,7 +18,6 @@ type Person struct {
 // IndexHandler index handler
 func IndexHandler(w http.ResponseWriter,
 	r *http.Request) {
-
 	fmt.Fprint(w, "hello world")
 }
 
@@ -26,28 +26,26 @@ func PersonHandler(w http.ResponseWriter,
 	r *http.Request) {
 	defer r.Body.Close() // 処理の最後にBodyを閉じる
 
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	errorhandle.ErrorHandler(err)
+	fmt.Println(id)
+
 	if r.Method == "POST" {
 		// リクエストボディをJSONに変換
 		var person Person
 		decoder := json.NewDecoder(r.Body)
 		err := decoder.Decode(&person)
-		if err != nil { // エラー処理
-			log.Fatal(err)
-		}
+		errorhandle.ErrorHandler(err)
 
 		// ファイル名を {id}.txtとする
 		filename := fmt.Sprintf("%d.txt", person.ID)
 		file, err := os.Create(filename) // ファイルを生成
-		if err != nil {
-			log.Fatal(err)
-		}
+		errorhandle.ErrorHandler(err)
 		defer file.Close()
 
 		// ファイルにNameを書き込む
 		_, err = file.WriteString(person.Name)
-		if err != nil {
-			log.Fatal(err)
-		}
+		errorhandle.ErrorHandler(err)
 
 		// レスポンスとしてステータスコード201を送信
 		w.WriteHeader(http.StatusCreated)
