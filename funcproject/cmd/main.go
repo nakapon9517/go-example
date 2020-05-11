@@ -1,10 +1,10 @@
 package main
 
 import (
-	jsontool "funcproject/jsontool"
+	template "funcproject/template"
 )
 
 func main() {
 	// http
-	jsontool.RequestCall("/", "/persons", ":3000")
+	template.RequestCall("/", "/persons", ":3000")
 }
