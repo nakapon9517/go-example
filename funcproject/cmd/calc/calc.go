@@ -2,5 +2,6 @@ package calc
 
 // Sum return sum
 func Sum(i, j int) int {
-	return i + j
+	a := i + j
+	return a
 }
